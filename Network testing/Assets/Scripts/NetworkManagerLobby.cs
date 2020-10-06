@@ -26,6 +26,9 @@ public class NetworkManagerLobby : NetworkManager
     // reference to player prefab
     [SerializeField] private NetworkRoomPlayerLobby room_player_prefab_ = null;
 
+    [Header("Game")]
+    [SerializeField] private NetworkGamePlayerLobby game_player_prefab_ = null;
+
     // custom events to be used by other classes
     public static event Action OnClientConnected;
     public static event Action OnClientDisconnected;
@@ -187,7 +190,27 @@ public class NetworkManagerLobby : NetworkManager
 
             // for now takes players to a temporary testing scene
             // can be changed later
-            ServerChangeScene("Scene_testbed");
+            ServerChangeScene("Scene_Testbed");
         }
+    }
+
+    public override void ServerChangeScene(string newSceneName)
+    {
+        if (SceneManager.GetActiveScene().path == menu_scene_)
+        {
+            // replace lobby player ovbjects with game player objects
+            for (int i = room_players_.Count - 1; i >= 0; i--)
+            {
+                var conn = room_players_[i].connectionToClient;
+                var gameplay_instance = Instantiate(game_player_prefab_);
+                gameplay_instance.SetDisplayName(room_players_[i].display_name_);
+
+                NetworkServer.Destroy(conn.identity.gameObject);
+
+                NetworkServer.ReplacePlayerForConnection(conn, gameplay_instance.gameObject);
+            }
+        }
+
+        base.ServerChangeScene(newSceneName);
     }
 }

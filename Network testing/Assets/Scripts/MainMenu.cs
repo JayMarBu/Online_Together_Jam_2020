@@ -13,6 +13,7 @@ public class MainMenu : MonoBehaviour
     // a.k.a. presses host button
     public void HostLobby()
     {
+        //network_manager_.networkAddress = "192.168.0.1";
         network_manager_.StartHost();
 
         landing_page_panel_.SetActive(false);
