@@ -183,7 +183,11 @@ public class NetworkManagerLobby : NetworkManager
     {
         if (SceneManager.GetActiveScene().path == menu_scene_)
         {
+            if(!IsReadyToStart()) {return;}
 
+            // for now takes players to a temporary testing scene
+            // can be changed later
+            ServerChangeScene("Scene_testbed");
         }
     }
 }

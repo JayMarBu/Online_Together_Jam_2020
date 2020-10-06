@@ -5,6 +5,7 @@ using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
+// TODO: change dumb ass tutorial nameing scheme
 public class NetworkGamePlayerLobby : NetworkBehaviour
 {
     /// <summary>
