@@ -9,6 +9,9 @@
 [Bb]uilds/
 [Ll]ogs/
 [Mm]emoryCaptures/
+**/Mirror/
+**/TextMesh Pro/
+**/ScriptTemplates/
 
 # Asset meta data should only be ignored when the corresponding asset is also ignored
 ![Aa]ssets/**/*.meta
@@ -58,3 +61,5 @@ sysinfo.txt
 # Crashlytics generated file
 crashlytics-build.properties
 
+Network testing/Assets/ScriptTemplates.meta
+Network testing/Assets/Mirror.meta
