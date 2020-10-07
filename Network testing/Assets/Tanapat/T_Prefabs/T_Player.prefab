@@ -144,7 +144,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   playerFallingVelocity: {x: 0, y: 0, z: 0}
-  playerSpeed: 19
+  playerSpeed: 17
   playerGravity: -14
 --- !u!143 &2026387060
 CharacterController:

@@ -28,16 +28,16 @@ public class NetworkManagerLobby : NetworkManager
 
     [Header("Game")]
     [SerializeField] private NetworkGamePlayerLobby game_player_prefab_ = null;
+    [SerializeField] private GameObject player_spawn_system_ = null;
 
     // custom events to be used by other classes
     public static event Action OnClientConnected;
     public static event Action OnClientDisconnected;
+    public static event Action<NetworkConnection> OnServerReadied;
 
     //list to store all players in room
     public List<NetworkRoomPlayerLobby> room_players_ { get; } = new List<NetworkRoomPlayerLobby>();
     public List<NetworkGamePlayerLobby> game_players_ { get; } = new List<NetworkGamePlayerLobby>();
-
-    
 
     // STARTUP //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
     // alter startup code depending on whether or not user is the host (server)
@@ -213,4 +213,25 @@ public class NetworkManagerLobby : NetworkManager
 
         base.ServerChangeScene(newSceneName);
     }
+
+    public override void OnServerReady(NetworkConnection conn)
+    {
+        // run base functionality
+        base.OnServerReady(conn);
+
+        // raise custom event
+        OnServerReadied?.Invoke(conn);
+    }
+
+    public override void OnServerSceneChanged(string sceneName)
+    {
+        // TODO: Come up with naming convention for scenes to 
+        // allow for validation
+        if (sceneName.StartsWith("Scene_"))
+        {
+            GameObject player_spawn_system_instance = Instantiate(player_spawn_system_);
+            NetworkServer.Spawn(player_spawn_system_instance);
+        }
+    }
+
 }
