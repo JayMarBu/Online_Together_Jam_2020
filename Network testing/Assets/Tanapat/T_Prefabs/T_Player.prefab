@@ -152,7 +152,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4766504232185776726}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0.89, z: 0.57}
+  m_LocalPosition: {x: 0, y: 2.95, z: -0.07}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 4046723335871558905}
@@ -171,7 +171,7 @@ GameObject:
   - component: {fileID: 2026387060}
   m_Layer: 0
   m_Name: T_Player
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -210,7 +210,7 @@ MonoBehaviour:
   playerSpeed: 8
   playerGravity: -26.3
   playerJumpHeight: 1.7
-  playerHandEmpty: 0
+  playerHandEmpty: 1
   playerGroundCheck: {fileID: 149200420}
   groundDistance: 0.2
   groundMask:

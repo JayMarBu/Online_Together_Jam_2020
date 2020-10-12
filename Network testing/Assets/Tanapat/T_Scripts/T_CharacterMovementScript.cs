@@ -36,7 +36,7 @@ public class T_CharacterMovementScript : MonoBehaviour
     [Space]
 
     [Header("PlayerHand")]
-    public bool playerHandEmpty;
+    public bool playerHandEmpty = true;
     [Space]
 
     [Header("PlayerGroundChecks")]
@@ -87,17 +87,5 @@ public class T_CharacterMovementScript : MonoBehaviour
         playerCharacterController.Move(playerMovement);
         #endregion
 
-        if(Input.GetKey("E") && playerHandEmpty)
-        {
-            //pickup object
-            //Check if object is in range
-            //grab object.transform in range
-            //keep object.transform on player hand
-            Invoke("Pickup", 1);
-        }
-        else if(Input.GetKey("E"))
-        {
-            //Drop Object or place object
-        }
     }
 }
