@@ -21,12 +21,12 @@ public class PickableObject : MonoBehaviour
         {
             playerHandLocation = GameObject.Find("Item").transform;
 
-            if (Input.GetKeyDown(KeyCode.E) && FindObjectOfType<T_CharacterMovementScript>().playerHandEmpty == true)
+            if (Input.GetKeyDown(KeyCode.E) && FindObjectOfType<BasicBehaviour>().playerHandEmpty == true)
             {
 
-                GetComponent<Rigidbody>().velocity = new Vector3(0,0,0);
-                //Can't figure out how to stop rotation, however it could be a feature, so i've always added rotation
-                GetComponent<Rigidbody>().AddTorque(10, 10, 0);
+                //GetComponent<Rigidbody>().velocity = new Vector3(0,0,0);
+                //Can't figure out how to stop rotation, however it could be a feature, so i've added rotation
+                //GetComponent<Rigidbody>().AddTorque(10, 10, 0);
 
                 GetComponent<Rigidbody>().useGravity = false;
                 GetComponent<BoxCollider>().enabled = false;
@@ -35,7 +35,7 @@ public class PickableObject : MonoBehaviour
                 this.transform.parent = GameObject.Find("Item").transform;
 
                 Debug.Log("Pickup");
-                FindObjectOfType<T_CharacterMovementScript>().playerHandEmpty = false;
+                FindObjectOfType<BasicBehaviour>().playerHandEmpty = false;
 
                 
             }
@@ -45,7 +45,7 @@ public class PickableObject : MonoBehaviour
                 GetComponent<BoxCollider>().enabled = true;
 
                 this.transform.parent = null;
-                FindObjectOfType<T_CharacterMovementScript>().playerHandEmpty = true;
+                FindObjectOfType<BasicBehaviour>().playerHandEmpty = true;
 
                 Debug.Log("Drop");
             }

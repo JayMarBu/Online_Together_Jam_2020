@@ -51,7 +51,7 @@ public class T_CharacterMovementScript : MonoBehaviour
     // Grab components
     void Start()
     {
-        playerRigidBody = GetComponentInChildren<Rigidbody>();
+        playerRigidBody = GetComponent<Rigidbody>();
         playerCharacterController = GetComponent<CharacterController>();
     }
 
