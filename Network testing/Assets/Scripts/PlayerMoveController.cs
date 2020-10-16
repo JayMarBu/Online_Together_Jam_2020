@@ -9,9 +9,12 @@ public class PlayerMoveController : NetworkBehaviour
     [SerializeField] private CharacterController controller = null;
 
     private Vector2 previous_input_;
+    public bool playerHandEmpty = true;
 
     private Controls controls_;
     private Controls controls 
+
+            
     {
         get 
         {

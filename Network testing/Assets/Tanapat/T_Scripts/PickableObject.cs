@@ -26,8 +26,10 @@ public class PickableObject : MonoBehaviour
 
                 //GetComponent<Rigidbody>().velocity = new Vector3(0,0,0);
                 //Can't figure out how to stop rotation, however it could be a feature, so i've added rotation
-                //GetComponent<Rigidbody>().AddTorque(10, 10, 0);
+                GetComponent<Rigidbody>().AddTorque(10, 10, 0);
 
+
+                GetComponent<Rigidbody>().isKinematic = true;//for some reason not always needed
                 GetComponent<Rigidbody>().useGravity = false;
                 GetComponent<BoxCollider>().enabled = false;
 
@@ -41,6 +43,7 @@ public class PickableObject : MonoBehaviour
             }
             else if (Input.GetKeyDown(KeyCode.E))
             {
+                GetComponent<Rigidbody>().isKinematic = false ;
                 GetComponent<Rigidbody>().useGravity = true;
                 GetComponent<BoxCollider>().enabled = true;
 
@@ -52,7 +55,8 @@ public class PickableObject : MonoBehaviour
         }
     }
 
-
+    //BasicBehaviour
+    //PlayerMoveController
     #region isPlayerInRange
     public void OnTriggerEnter(Collider other)
     {
